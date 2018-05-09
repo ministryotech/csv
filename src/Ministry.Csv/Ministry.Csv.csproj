@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
-    <Authors>Keith Jackson0</Authors>
+    <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
+    <Authors>Keith Jackson</Authors>
     <Company>Minotech Ltd. (The Ministry of Technology) / Esoterix Systems Ltd.</Company>
     <Description>CSV Component Package</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>2018 Minotech Ltd.</Copyright>
     <RepositoryUrl>https://github.com/ministryotech/csv.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
     <PackageLicenseUrl>http://www.opensource.org/licenses/MIT</PackageLicenseUrl>
     <PackageProjectUrl>http://www.ministryotech.co.uk/developers/open-source-projects/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ministry.Compositions" Version="1.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Ministry.Compositions" Version="1.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
   </ItemGroup>
 
