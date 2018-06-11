@@ -9,11 +9,12 @@
     <Copyright>2018 Minotech Ltd.</Copyright>
     <RepositoryUrl>https://github.com/ministryotech/csv.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.0.2</Version>
     <PackageLicenseUrl>http://www.opensource.org/licenses/MIT</PackageLicenseUrl>
     <PackageProjectUrl>http://www.ministryotech.co.uk/developers/open-source-projects/</PackageProjectUrl>
+    <PackageReleaseNotes>Reduced minimum version of supported Newtonsoft.Json</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
