@@ -30,7 +30,7 @@ public class CsvCell
     /// <param name="header">The header.</param>
     /// <param name="value">The value.</param>
     public CsvCell(string header, object value)
-        : this(header, value.ToString())
+        : this(header, value.ToString() ?? string.Empty)
     { }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class CsvCell
     /// <summary>
     /// Gets or sets the value.
     /// </summary>
-    public string Value { get; set; }
+    public string Value { get; set; } = string.Empty;
 
     /// <summary>
     /// Gets a value indicating whether this cell is empty.

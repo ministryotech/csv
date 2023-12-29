@@ -53,7 +53,7 @@ public class CsvDefinition
     /// <param name="rowValues">The value of items for the cells. These must be provided for all headers.</param>
     /// <returns>This definition object for fluent syntax.</returns>
     public CsvDefinition AddRow(params object[] rowValues)
-        => AddRow(rowValues.Select(rv => rv.ToString()).ToArray());
+        => AddRow(rowValues.Select(rv => rv.ToString() ?? string.Empty).ToArray());
 
     /// <summary>
     /// Adds multiple rows at once if there are any in the provided source(s).

@@ -38,7 +38,7 @@ public class CsvRow : List<CsvCell>
     /// </summary>
     /// <param name="header">The header.</param>
     /// <returns>A cell.</returns>
-    public CsvCell Cell(string header) => this.FirstOrDefault(item =>
+    public CsvCell? Cell(string header) => this.FirstOrDefault(item =>
         string.Equals(item.Header, header, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>

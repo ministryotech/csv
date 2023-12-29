@@ -6,6 +6,8 @@ namespace Ministry.Csv;
 /// Provides functional utilities for generating CSV files.
 /// </summary>
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "Library")]
+[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Library")]
+[SuppressMessage("ReSharper", "UnusedMethodReturnValue.Local", Justification = "Library")]
 public static class CsvGenerator
 {
     private const char DELIM = ',';
@@ -31,7 +33,9 @@ public static class CsvGenerator
 
         return new CsvDefinition()
             .AddHeaders(headers)
-            .AddRowsIfAny(rows.Select(r => SplitWithEscape(r, ',', '"')).ToArray());
+            .AddRowsIfAny(rows
+                .Select(r => SplitWithEscape(r, ',', '"'))
+                .ToArray());
     }
 
     /// <summary>
@@ -112,7 +116,6 @@ public static class CsvGenerator
     /// <param name="definition">The definition.</param>
     /// <param name="row">The row.</param>
     /// <returns>The mutated string builder.</returns>
-    [SuppressMessage("ReSharper", "UnusedMethodReturnValue.Local")]
     private static StringBuilder AppendRow(this StringBuilder sb, CsvDefinition definition, CsvRow row)
     {
         foreach (var header in definition.Headers)
@@ -128,9 +131,8 @@ public static class CsvGenerator
     /// Encodes the specified value.
     /// </summary>
     /// <param name="value">The value.</param>
-    /// <returns></returns>
-    [SuppressMessage("ReSharper", "CanBeReplacedWithTryCastAndCheckForNull")]
-    private static string Encode(object value)
+    /// <returns>The encoded string.</returns>
+    private static string Encode(object? value)
     {
         if (value == null)
             return string.Empty;
