@@ -108,19 +108,19 @@ public class CsvGeneratorTests
 
     [Fact]
     public void WhenCallingGenerateStringDirectlyTheDefinitionParameterIsRequired()
-        => Assert.Throws<ArgumentNullException>("definition", () => CsvGenerator.GenerateString(null));
+        => Assert.Throws<ArgumentNullException>("definition", () => CsvGenerator.GenerateString(null!));
 
     [Fact]
     public void WhenCallingGenerateFileDirectlyTheDefinitionParameterIsRequired()
-        => Assert.Throws<ArgumentNullException>("definition", () => CsvGenerator.GenerateFile(null, "C:\\myfile.csv"));
+        => Assert.Throws<ArgumentNullException>("definition", () => CsvGenerator.GenerateFile(null!, "C:\\myfile.csv"));
 
     [Fact]
     public void WhenCallingGenerateBytesDirectlyTheDefinitionParameterIsRequired()
-        => Assert.Throws<ArgumentNullException>("definition", () => CsvGenerator.GenerateBytes(null));
+        => Assert.Throws<ArgumentNullException>("definition", () => CsvGenerator.GenerateBytes(null!));
 
     [Fact]
     public void WhenCallingGenerateFileThePathParameterIsRequired()
-        => Assert.Throws<ArgumentNullException>("path", () => CsvDefinitionProvider.GetValid().GenerateFile(null));
+        => Assert.Throws<ArgumentNullException>("path", () => CsvDefinitionProvider.GetValid().GenerateFile(null!));
 
     [Fact]
     public void WhenCallingGenerateFileThePathParameterCannotBeEmpty()
