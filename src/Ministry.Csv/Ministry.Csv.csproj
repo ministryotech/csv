@@ -1,26 +1,56 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
-    <Authors>Keith Jackson</Authors>
-    <Company>Minotech Ltd. (The Ministry of Technology) / Esoterix Systems Ltd.</Company>
-    <Description>CSV Component Package</Description>
+    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>10</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AnalysisMode>Recommended</AnalysisMode>
+    <AnalysisModeGlobalization>None</AnalysisModeGlobalization>
+    <AnalysisModeSecurity>All</AnalysisModeSecurity>
+    <AnalysisModeMaintainability>All</AnalysisModeMaintainability>
+    <AnalysisLevel>6.0</AnalysisLevel>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Copyright>2018 Minotech Ltd.</Copyright>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>CSV Component Package</Description>
+    <Authors>Keith Jackson</Authors>
+    <Company>Minotech Ltd. (The Ministry of Technology)</Company>
+    <Copyright>2024 Keith Jackson / The Ministry of Technology</Copyright>
     <RepositoryUrl>https://github.com/ministryotech/csv.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
-    <Version>1.0.3</Version>
-    <PackageLicenseUrl>http://www.opensource.org/licenses/MIT</PackageLicenseUrl>
-    <PackageProjectUrl>http://www.ministryotech.co.uk/developers/open-source-projects/</PackageProjectUrl>
-    <PackageReleaseNotes>Reduced minimum version of supported Newtonsoft.Json</PackageReleaseNotes>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <PackageReadMeFile>README.md</PackageReadMeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!--<WarningsNotAsErrors></WarningsNotAsErrors>--><!--Enable this to allow some warnings-->
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ministry.Compositions" Version="1.0.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" Condition="'$(TargetFramework)' == 'netstandard1.6'" />
-    <PackageReference Include="Newtonsoft.Json" Version="6.0.5" Condition="'$(TargetFramework)' == 'net45'" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ministry.Compositions" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
   </ItemGroup>
 

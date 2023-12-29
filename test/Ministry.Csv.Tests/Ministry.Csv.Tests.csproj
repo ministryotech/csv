@@ -1,32 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>10</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <Authors>Keith Jackson</Authors>
-    <Company>Minotech Ltd. (The Ministry of Technology) / Esoterix Systems Ltd.</Company>
-    <Description>Test Library</Description>
+    <Company>Minotech Ltd. (The Ministry of Technology)</Company>
+    <Description>Test library</Description>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <Copyright>2018 Minotech Ltd.</Copyright>
-    <RepositoryUrl>https://github.com/ministryotech/fluent-guard.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <ApplicationIcon />
-    <OutputTypeEx>exe</OutputTypeEx>
-    <StartupObject />
-    <Version>1.0.0</Version>
+    <Copyright>2024 Keith Jackson / The Ministry of Technology</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Ministry.Csv\Ministry.Csv.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="8.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="NSubstitute" Version="5.1.0" />
+    <PackageReference Include="xunit" Version="2.6.4" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.0.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
-    <PackageReference Include="NSubstitute" Version="3.1.0" />
-    <PackageReference Include="System.Linq" Version="4.3.0" />
-    <PackageReference Include="xunit" Version="2.3.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
-    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.0-beta1-build3642" />
+    <ProjectReference Include="..\..\src\Ministry.Csv\Ministry.Csv.csproj" />
   </ItemGroup>
 
 </Project>

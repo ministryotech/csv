@@ -1,68 +1,64 @@
-﻿using System;
-using Ministry.Compositions;
-using Xunit;
+﻿namespace Ministry.Csv.Tests;
 
-namespace Ministry.Csv.Tests
+[Trait("Category", "Csv")]
+public class CsvDefinitionTests
 {
-    [Trait("Category", "Csv")]
-    public class CsvDefinitionTests
+    [Fact]
+    public void CanCreateACsvDefinition()
     {
-        [Fact]
-        public void CanCreateACsvDefinition()
-        {
             var objUt = new CsvDefinition();
             
             Assert.Empty(objUt.Headers);
             Assert.Empty(objUt.Rows);
         }
 
-        [Fact]
-        public void CanValidateACsvDefinition()
-        {
+    [Fact]
+    public void CanValidateACsvDefinition()
+    {
             var objUt = new CsvDefinition();
             objUt.Headers.AddItems("Column 1", "Column 2", "TOTAL");
             objUt.Rows.AddItems(
                 new CsvRow
                 {
-                    new CsvCell("Column 1", 10),
-                    new CsvCell("Column 2", 20),
-                    new CsvCell("TOTAL", 30)
+                    new("Column 1", 10),
+                    new("Column 2", 20),
+                    new("TOTAL", 30)
                 },
                 new CsvRow
                 {
-                    new CsvCell("Column 1", 11),
-                    new CsvCell("Column 2", 21),
-                    new CsvCell("TOTAL", 31)
+                    new("Column 1", 11),
+                    new("Column 2", 21),
+                    new("TOTAL", 31)
                 });
 
             Assert.True(objUt.Validate());
         }
 
-        [Fact]
-        public void ACsvDefinitionWithACellForANonExistentHeaderIsInvalid()
-        {
+    [Fact]
+    public void ACsvDefinitionWithACellForANonExistentHeaderIsInvalid()
+    {
             var objUt = new CsvDefinition();
             objUt.Headers.AddItems("Column 1", "Column 2", "TOTAL");
             objUt.Rows.AddItems(
                 new CsvRow
                 {
-                    new CsvCell("Column 1", 10),
-                    new CsvCell("Column 2", 20),
-                    new CsvCell("TOTAL", 30)
+                    new("Column 1", 10),
+                    new("Column 2", 20),
+                    new("TOTAL", 30)
                 },
                 new CsvRow
                 {
-                    new CsvCell("Column 1", 11),
-                    new CsvCell("Column 2", 21),
-                    new CsvCell("Column 3", 31)
+                    new("Column 1", 11),
+                    new("Column 2", 21),
+                    new("Column 3", 31)
                 });
 
             Assert.False(objUt.Validate());
         }
 
-        [Fact]
-        public void CanBuildACsvDefinitionByAddingHeadersDirectly()
-        {
+    [Fact]
+    public void CanBuildACsvDefinitionByAddingHeadersDirectly()
+    {
             var objUt = new CsvDefinition();
             objUt.AddHeaders("Column 1", "Column 2", "TOTAL");
 
@@ -70,9 +66,9 @@ namespace Ministry.Csv.Tests
             Assert.Equal(3, objUt.Headers.Count);
         }
 
-        [Fact]
-        public void CanBuildACsvDefinitionByAddingARowDirectly()
-        {
+    [Fact]
+    public void CanBuildACsvDefinitionByAddingARowDirectly()
+    {
             var objUt = new CsvDefinition();
             objUt.AddHeaders("Column 1", "Column 2", "TOTAL");
             objUt.AddRow(10, 20, 30);
@@ -89,32 +85,32 @@ namespace Ministry.Csv.Tests
             Assert.Equal(objUt.Headers[2], objUt.Rows[1][2].Header);
         }
 
-        [Fact]
-        public void WhenAddingHeadersTheHeadersAreRequired()
-        {
+    [Fact]
+    public void WhenAddingHeadersTheHeadersAreRequired()
+    {
             var objUt = new CsvDefinition();
             Assert.Throws<ArgumentException>("headers", () => objUt.AddHeaders());
         }
 
-        [Fact]
-        public void AddingARowWhereTheTotalNumberOfRowsIsLessThanTheNumberOfHeadersThrowsAnInvalidOperationException()
-        {
+    [Fact]
+    public void AddingARowWhereTheTotalNumberOfRowsIsLessThanTheNumberOfHeadersThrowsAnInvalidOperationException()
+    {
             var objUt = new CsvDefinition();
             objUt.AddHeaders("Column 1", "Column 2", "TOTAL");
             Assert.Throws<InvalidOperationException>(() => objUt.AddRow(10, 20));
         }
 
-        [Fact]
-        public void AddingARowWhereTheTotalNumberOfRowsIsGreaterThanTheNumberOfHeadersThrowsAnInvalidOperationException()
-        {
+    [Fact]
+    public void AddingARowWhereTheTotalNumberOfRowsIsGreaterThanTheNumberOfHeadersThrowsAnInvalidOperationException()
+    {
             var objUt = new CsvDefinition();
             objUt.AddHeaders("Column 1", "Column 2", "TOTAL");
             Assert.Throws<InvalidOperationException>(() => objUt.AddRow(10, 20, 30, 40));
         }
 
-        [Fact]
-        public void AddHeadersAndAddRowReturnsTheCsvDefinitionToEnableChaining()
-        {
+    [Fact]
+    public void AddHeadersAndAddRowReturnsTheCsvDefinitionToEnableChaining()
+    {
             var objUt = new CsvDefinition()
                 .AddHeaders("Column 1", "Column 2", "TOTAL")
                 .AddRow(10, 20, 30)
@@ -123,5 +119,4 @@ namespace Ministry.Csv.Tests
             Assert.NotEmpty(objUt.Rows);
             Assert.Equal(2, objUt.Rows.Count);
         }
-    }
 }
