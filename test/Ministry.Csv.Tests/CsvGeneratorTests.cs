@@ -81,7 +81,7 @@ public class CsvGeneratorTests
             rows.Split('|').Select(row => row.Split(',')).ToArray());
         var result = definition.GenerateString();
 
-        Assert.Equal($"{headers}\r\n{rows.Replace("|","\r\n")}\r\n", result);
+        Assert.Equal($"{headers}\n{rows.Replace("|","\n")}\n", result);
     }
 
     [Theory]
@@ -94,7 +94,7 @@ public class CsvGeneratorTests
         var definition = CsvDefinitionProvider.Get(headers.Split(','));
         var result = definition.GenerateString();
 
-        Assert.Equal($"{headers}\r\n", result);
+        Assert.Equal($"{headers}\n", result);
     }
 
     [Fact]
